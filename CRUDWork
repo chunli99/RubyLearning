@@ -1,0 +1,50 @@
+# Creates a library with CRUD methods
+
+movies = {
+ 'Pirates_of_the_Carribean' => 5   
+}
+
+puts "What would you like to do?: "
+puts "add, update, display, or delete"
+
+choice = gets.chomp
+
+case choice
+    when "add"
+        puts "What movie title would you like to add?"
+            title = gets.chomp
+        if movies[title.to_sym] == nil
+            puts "And what rating would you like to give " +                  title +"?"
+            rating = gets.chomp
+            movies = title.to_sym, rating.to_i
+            puts "Added!"
+        else
+            "Sorry, it seems that " + title + " is already in the library!"
+        end
+        
+    when "update"
+        puts "What title would you like to update?"
+        utitle = gets.chomp
+        if movies[utitle] == nil
+            puts "Error: Movie title is not in the library."
+        else
+            puts "What would you like the new rating for " + utitle + " to be?"
+            urating = gets.chomp
+            movies = utitle.to_sym, urating.to_i 
+           
+        end
+    when "display"
+        movies = "#{movies}: #{rating}"
+        puts movies.each
+    when "delete"
+        puts "What would you like to delete?"
+        deltitle = gets.chomp
+        if movies[deltitle] == nil
+            puts "Error: Movie title is not in the library."
+        else 
+            movies.delete(deltitle)
+            puts "The movie " + deltitle + " has been deleted!"
+        end
+    else 
+        puts 'Error!'
+end
