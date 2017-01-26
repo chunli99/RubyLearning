@@ -1,0 +1,19 @@
+#Takes an input from user and counts the number of times each word is used.
+#todo: Write in check of common, lower-level words and implement notice of frequent usage. 
+
+puts "Why did the chicken cross the road?" 
+text = gets.chomp
+
+words = text.split
+
+frequencies = Hash.new(0)
+
+words.each{|word| frequencies[word] += 1}
+
+frequencies = frequencies.sort_by do |word, value|
+    puts word + " " + value.to_s
+end
+
+
+
+# frequencies.reverse!
